@@ -1,0 +1,43 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+.heart{width:160px;height:200px;position:relative; /* relative(相对定位) 对象不可层叠、不脱离文档流，参考自身静态位置通过 top,bottom,left,right 定位，并且可以通过z-index进行层次分级 */
+}
+/* after 伪元素在元素之前添加内容*/
+.heart:before{
+content:" ";
+border-radius:100px 100px 0 0;/* 正方形的内切圆的半径等于正方形边长的一半 */
+width:80px; height:120px;/* 长方形 */
+background:#669;
+-moz-transform: rotate(-45deg);/* 逆时针旋转45°*/
+-ms-transform: rotate(-45deg);
+-o-transform: rotate(-45deg);
+-webkit-transform: rotate(-45deg);
+position:absolute;/* absolute(绝对定位) 脱离文档流，通过 top,bottom,left,right 定位 */
+left:20px;}
+
+/* after 伪元素在元素之后添加内容*/
+.heart:after{
+content:" ";
+width:80px; height:120px;
+background:#669;
+border-radius:100px 100px 0 0;
+-moz-transform: rotate(45deg);
+-ms-transform: rotate(45deg);
+-o-transform: rotate(45deg);
+-webkit-transform: rotate(45deg); 
+position:absolute;
+left:48px;top:0px;
+}
+
+</style>
+</head>
+
+<body>
+<div class="heart"></div>
+</body>
+</html>

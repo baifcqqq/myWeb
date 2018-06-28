@@ -70,22 +70,120 @@
 <body>
     <div class="top">Give me that lovely jiaMen</div>
     <div class="photo-t">
-        <div class="photo1"></div>
-        <div class="photo1"></div>
-        <div class="photo1"></div>
+        <div class="photo1" style="background-image: url('imges/2.jpg');"><img class="img1" onclick="xunZhuan()" src="imges/wenHao.jpg" style="-webkit-transform: rotateY(0deg);opacity: 1; " /> </div>
+        <div class="photo1"><img class="img1" onclick="xunZhuan2()" src="imges/wenHao.jpg" /></div>
+        <div class="photo1"><img class="img1" onclick="xunZhuan3()" src="imges/wenHao.jpg" /></div>
         </div>
      <div class="photo-b">
-        <div class="photo1"></div>
-        <div class="photo1"></div>
-        <div class="photo1"></div>
+        <div class="photo1"><img onclick="xunZhuan4()" class="img1" src="imges/wenHao.jpg" /></div>
+        <div class="photo1"><img onclick="xunZhuan5()" class="img1" src="imges/wenHao.jpg" /></div>
+        <div class="photo1"><img onclick="xunZhuan6()" class="img1" src="imges/wenHao.jpg" /></div>
      </div>
 
     <iframe src="leiLian/demo.html" frameborder="0" width="100%" height="300px"></iframe>
     <div class="content">
         <div class="content-right">
-
         </div>
         <div class="content-left"></div>
     </div>
 </body>
+<script>
+
+    function xunZhuan(){
+        var img1 = document.getElementsByClassName('img1')[0];
+        var timer;
+        var index = 0;
+        var opacity = 1;
+        timer = setInterval(function(){
+            index = index + 3;
+             opacity = opacity - 0.02;
+           img1.style.webkitTransform = 'rotateY('+index+'deg)';
+           img1.style.opacity = opacity;
+            if(index > 180){
+                  clearInterval(timer);
+          }
+        }
+        ,10)
+    }
+    function xunZhuan2(){
+        var timer;
+        var index = 0;
+        var opacity = 1;
+        var img1 = document.getElementsByClassName('img1')[1];
+        timer = setInterval(function(){
+                    index = index + 3;
+                    opacity = opacity - 0.02;
+                    img1.style.webkitTransform = 'rotateY('+index+'deg)';
+                    img1.style.opacity = opacity;
+                    if(index > 180){
+                        clearInterval(timer);
+                    }
+                }
+                ,10)
+    }
+    function xunZhuan3(){
+        var timer;
+        var index = 0;
+        var opacity = 1;
+        var img1 = document.getElementsByClassName('img1')[2];
+        timer = setInterval(function(){
+                    index = index + 3;
+                    opacity = opacity - 0.02;
+                    img1.style.webkitTransform = 'rotateY('+index+'deg)';
+                    img1.style.opacity = opacity;
+                    if(index > 180){
+                        clearInterval(timer);
+                    }
+                }
+                ,10)
+    }
+    function xunZhuan4(){
+        var timer;
+        var index = 0;
+        var opacity = 1;
+        var img1 = document.getElementsByClassName('img1')[3];
+        timer = setInterval(function(){
+                    index = index + 3;
+                    opacity = opacity - 0.02;
+                    img1.style.webkitTransform = 'rotateY('+index+'deg)';
+                    img1.style.opacity = opacity;
+                    if(index > 180){
+                        clearInterval(timer);
+                    }
+                }
+                ,10)
+    }
+    function xunZhuan5(){
+        var timer;
+        var index = 0;
+        var opacity = 1;
+        var img1 = document.getElementsByClassName('img1')[4];
+        timer = setInterval(function(){
+                    index = index + 3;
+                    opacity = opacity - 0.02;
+                    img1.style.webkitTransform = 'rotateY('+index+'deg)';
+                    img1.style.opacity = opacity;
+                    if(index > 180){
+                        clearInterval(timer);
+                    }
+                }
+                ,10)
+    }
+    function xunZhuan6(){
+        var timer;
+        var index = 0;
+        var opacity = 1;
+        var img1 = document.getElementsByClassName('img1')[5];
+        timer = setInterval(function(){
+                    index = index + 3;
+                    opacity = opacity - 0.02;
+                    img1.style.webkitTransform = 'rotateY('+index+'deg)';
+                    img1.style.opacity = opacity;
+                    if(index > 180){
+                        clearInterval(timer);
+                    }
+                }
+                ,10)
+    }
+</script>
 </html>

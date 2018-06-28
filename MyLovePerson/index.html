@@ -1,1 +1,83 @@
 
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 声明这是一个手机网页-->
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>Document</title>
+    <style>
+        .top{
+            width: 100%;
+            height:200px;
+            background:-webkit-linear-gradient( top,pink,#FFFFFF);
+            font-size:150%;
+            text-align:center;
+            color:purple;
+            font-weight: bold;
+            -webkit-animation: shanSuo 8s infinite;
+            /*css的弹性式布局*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+        }
+        @-webkit-keyframes shanSuo {
+            0%{
+                color:red;
+            }
+            14%{
+                color: orange;
+            }
+            28%{
+                color:yellow;
+            }
+            42%{
+                color: green;
+            }
+            56%{
+                color:deepskyblue;
+            }
+            70%{
+                color:blue;
+            }
+            84%{
+                color:purple;
+            }
+            100%{
+                color:black;
+            }
+        }
+        .photo{
+            width:100%;
+            height: 400px;
+            border:1px solid black;
+            display: flex;
+            justify-content: space-between;
+        }
+        .photo1,.photo2,.photo3,.photo4{
+            width: 200px;
+            height: 266px;
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">Give me that lovely jiaMen</div>
+    <div class="photo">
+        <div class="photo1"></div>
+        <div class="photo2"></div>
+        <div class="photo3"></div>
+        <div class="photo4"></div>
+    </div>
+    <iframe src="leiLian/demo.html" frameborder="0" width="100%" height="300px"></iframe>
+    <div class="content">
+        <div class="content-right">
+
+        </div>
+        <div class="content-left"></div>
+    </div>
+</body>
+</html>

@@ -1,1 +1,73 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+    <meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<title>html中的权重</title>
+	<style>
+		/**{
+			padding: 0px;
+			margin:0px;
+		}*/
+		.title{
+			font-size:18px;
+			text-align: center;
+			font-weight: bold;
+		}
+		.content{
+			padding:0 10px 0 10px;
+			list-style: 
+		}
+		span{
+			color:red;
+		}
+		.footer{
+			width: 100%;
+			height: 30px;
+		}
+	</style>
+</head>
+<body>
+	<p class="title">关于html选择器的权重</p>
+	<hr style="background:red">
+	<div class="content">
+		<p>选择器的权重： <span style="color:red">div < class < id < javascript</span></p>
+		<p style="font-size:24px;">案列：</p>
+		<ol>
+			<li>先用标签选择器和类选择器进行比较</li>
+			<img src="./imgWeight/1.png" width="100%" height="100%" alt="">
+			<li style="list-style:none">在网页中的效果</li>
+			<img src="./imgWeight/10.png" width="100%" height="100%" alt="">
+			<li value="2">从上述的比较中我们发现：<span>div < class</span>,这和我们css代码放置的位置无关。</li>
+			<br>
+			<hr style="border:1px dashed red">
+			<br>
+			<li style="list-style:none;font-size:18px;">接下来我们来观察类选择器和ID选择器</li>
+			<img src="./imgWeight/2.png" width="100%" height="100%" alt="">
+			<br>
+			<br>
+			<img src="./imgWeight/12.png" width="100%" height="100%" alt="">
+			<li value="3">这次我们发现：<span>class < id</span></li>
+			<br>
+			<hr style="border:1px dashed red">
+			<li style="list-style:none;font-size:18px;">下面演示的JavaScript和id选择器的比较</li>
+			<img src="./imgWeight/3.png" width="100%" height="100%" alt="">
+			<br>
+			<br>
+			<img src="./imgWeight/13.png" width="100%" height="100%" alt="">
+			<li value="4">这次我们发现：<span>id < js</span></li>
+			<li style="list-style:none;color:red">注意:用JavaScript添加的css样式是属于内联样式(图 红色圈哪里)</li>
+			<br>
+		</ol>
+		<p style="line-height:22px;">总结：通过上述的案例我们清晰的看出了每类选择器的权重排行（从这儿我们也可以看出JavaScript可以操作html-->Dom,但是它是不能操作css。只能在原有的基础上进行覆盖）。</p>
+		<hr>
+		<div class="footer">
+
+		</div>
+	</div>
+</body>
+</html>

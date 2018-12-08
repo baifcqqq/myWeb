@@ -1,43 +1,186 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>表白爱心</title>
-<style type="text/css">
-.heart{width:160px;height:200px;position:relative; /* relative(相对定位) 对象不可层叠、不脱离文档流，参考自身静态位置通过 top,bottom,left,right 定位，并且可以通过z-index进行层次分级 */
-}
-/* after 伪元素在元素之前添加内容*/
-.heart:before{
-content:" ";
-border-radius:100px 100px 0 0;/* 正方形的内切圆的半径等于正方形边长的一半 */
-width:80px; height:120px;/* 长方形 */
-background:#669;
--moz-transform: rotate(-45deg);/* 逆时针旋转45°*/
--ms-transform: rotate(-45deg);
--o-transform: rotate(-45deg);
--webkit-transform: rotate(-45deg);
-position:absolute;/* absolute(绝对定位) 脱离文档流，通过 top,bottom,left,right 定位 */
-left:20px;}
-
-/* after 伪元素在元素之后添加内容*/
-.heart:after{
-content:" ";
-width:80px; height:120px;
-background:#669;
-border-radius:100px 100px 0 0;
--moz-transform: rotate(45deg);
--ms-transform: rotate(45deg);
--o-transform: rotate(45deg);
--webkit-transform: rotate(45deg); 
-position:absolute;
-left:48px;top:0px;
-}
-
-</style>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body{
+            background-color: rgb(245,212,217);
+            opacity: 0.5;
+            overflow: hidden;
+        }
+        @-webkit-keyframes moonright {
+            0% {
+                top:250px;
+                left:0%;
+                opacity:0;
+                }
+            50% {
+                top:150px;
+                left:40%;
+                opacity:0.5;
+            }
+            100% {
+                top:50px;
+                left:80%;
+                opacity:1;
+            }
+        }
+        .heart:before{
+            content:" ";
+            border-radius:100px 100px 0 0;
+            width:80px; height:120px;
+            background:#f00;
+            -webkit-transform: rotate(-45deg);
+            position:absolute;
+            left:20px;
+        }
+        .heart{width:160px;height:200px;
+            position:relative;
+            left: 80%;
+            animation:moonright 10s linear;
+            z-index:999;
+            cursor: pointer;
+                 
+        }
+        .heart:hover{
+            transform: scale(1.2);
+            transition: 1s all;
+         }
+        .heart:after{
+            content:" ";
+            width:80px; height:120px;
+            background:#f00;
+            border-radius:100px 100px 0 0;
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -webkit-transform: rotate(45deg); 
+            position:absolute;
+            left:48px;top:0px;
+         }
+        span{
+            width: 30px;
+            height: 30px;
+            background: url("images/heart.png") no-repeat;
+            position: absolute;
+            background-size:100% 100%;
+            animation: flash 1s alternate infinite;
+            cursor: pointer;
+        }
+        @keyframes flash {
+            0%{opacity: 0;}
+            100%{opacity: 1;}
+        }
+        span:hover{
+            transform: scale(3, 3) rotate(360deg) !important;
+            transition: all 1s;
+        }
+        span:after{
+            content:" love";
+            font-size: 8px;
+            color: rgba(255,255,255,0.5);
+            margin:10% 0 0 10%; 
+        }
+        #drawing{
+            position: absolute;
+            top:0;
+            left: 50%;
+            transform: translateX(-20%);
+            margin: auto auto;
+        }
+    </style>
 </head>
-
 <body>
-<div class="heart"></div>
+        <div id="circle"></div>
+        <div class="heart"></div>
+        <span></span>
+        <canvas id="drawing"></canvas>
+        <img id="flower" src="./images/flower.png">       
+<script>
+       
+        // 屏幕的尺寸
+        function heart(){
+                 var screenW = document.documentElement.clientWidth;
+                 var screenH = document.documentElement.clientHeight;
+        // 2. 动态创建多个星星
+        for(var i=0; i<100; i++){
+            var span = document.createElement('span');
+            document.body.appendChild(span);
+
+            //位置随机
+            var x = parseInt(Math.random() * screenW);
+            var y = parseInt(Math.random() * screenH);
+            span.style.left = x + 'px';
+            span.style.top = y + 'px';
+            span.style.zIndex = "0";
+
+            //大小随机
+            var scale = Math.random() * 1.5;
+            span.style.transform = 'scale('+ scale + ', ' + scale + ')';
+
+            //频率随机
+            var rate = Math.random() * 1.5;
+            span.style.animationDelay = rate + 's';
+
+            //随机颜色
+            var color = Math.random()*255;
+            span.style.backgroundColor = "rab("+ color + "," + color+ ","+color+")";
+
+            // span.innerHTML = 'L';
+        }
+        
+        return [screenW,screenH];//函数执行返回屏幕的宽高
+    } 
+//canvas绘制爱心
+var arr = heart();
+function draw(){
+    var count=0;
+    var drawing = document.getElementById("drawing"); //获取canvas元素
+     var pic = document.getElementById('flower');
+    drawing.width = arr[0]; //设置画布大小
+    drawing.height = arr[1];
+    var timer;
+    if (drawing.getContext){  //获取绘图上下文
+        var content = drawing.getContext("2d"),
+            radian = 0,   //设置初始弧度
+            radian_add = Math.PI/180;  //设置弧度增量
+        content.beginPath();  //开始绘图
+        content.lineWidth = 5;
+        content.translate(250,250);  //设置绘图原点
+        content.moveTo(getX1(radian),getY1(radian)); //移动绘图游标至原点
+        timer =  setInterval(function(){
+            count++;
+            if(radian >= (Math.PI*2)){
+                clearInterval(timer);
+            }
+            radian += radian_add;
+            X = getX1(radian);
+            Y = getY1(radian);
+            if(count/8==1){
+                count=0;
+                content.drawImage(pic,X,Y,20,20);
+            }
+
+            content.lineTo(X,Y);
+            content.strokeStyle = "red";  //设置描边样式
+            content.stroke();  //对路径描边
+        },15)
+    }
+}
+function getX1(t){  //获取心型线的X坐标
+    return 15*(16*Math.pow(Math.sin(t),3))
+}
+function getY1(t){  //获取心型线的Y坐标
+    return -15*(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t))
+}
+draw();
+</script>
 </body>
 </html>
